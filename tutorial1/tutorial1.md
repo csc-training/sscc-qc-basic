@@ -27,6 +27,8 @@
   * You can also use a version from your laptop
   * Note: if you don't want to use the TmoleX GUI, you can follow the tutorial2, which uses the `define` command line tool to prepare the inputs
 
+!["Dassault Systemes website"](../screens_20/1.png "Dassault Systemes website")
+
 ## Task 1: Optimize the ground state for formaldehyde
 
 We need an initial guess for the geometry specifying the 3N-6 internal
@@ -35,9 +37,12 @@ energy surface that is uniquely defined by the computational model
 we are going to use (B-O approx.).  The performance of the model
 often vary at different parts of the surface.
 
-!["Potential energy surface"](../screens_20/2.png "potential energy surface")
+!["Potential energy surface"](../screens_20/pesurf.png "potential energy surface")
 
 ## Task 1: Launch TmoleX and create a new project
+
+* Note. TmoleX warns about not finding a license. This is ok. We'll use the TURBOMOLE license
+on Mahti for the calculations. Accept the dialog.
 
 !["Launch TmoleX GUI"](../screens_20/3.png "Launch TmoleX GUI")
 
@@ -95,16 +100,46 @@ Continue to run (network)
 
 ## Task 1: Run(network) -- Setup remote job
 
-Here we define the remote (supercomputer) configuration:
+Click **save** as the first dialog prompts for the folder to use for the job files.
+
+In the new dialog, we define the remote (supercomputer) configuration:
    * Which user account and project to use
    * Where TURBOMOLE is installed
    * etc.
    * Note, this will differ for every user and machine
    * In the Spring School 2023 we'll be using Mahti, but see here for the 
      general instructions for Puhti [docs.csc.fi/apps/tmolex/](https://docs.csc.fi/apps/tmolex/)
+   * **important** Replace `your-username` with your actual username on CSC supercomputer! Also, in the `work-directory` field.
 
 !["update"](../screens_20/10.png "upt")
 
+Use these:
+
+* Machine/IP: `mahti.csc.fi`
+* User: `<your-username>`
+* Work directory: `/scratch/project\_2006657/<your-username>`
+* TURBOMOLE directory: `/appl/soft/chem/turbomole/7.7/TURBOMOLE`
+* Use queuing system (tick)
+* Submit with: `sbatch`
+* Check status: `squeue -u $USER`
+
+Script before job execution:
+
+```bash
+#SBATCH --partition=interactive
+#SBATCH --account=project_2006657
+#SBATCH --time=00:10:00
+#SBATCH --ntasks=1
+#SBATCH --reservation=sscc_thu_int
+export MPI_USESRUN=1
+export SLURM_CPU_BIND=none
+```
+
+Click **save machine** at the top right
+
+Click **Start Job** at the bottom right
+
+* For this tutorial, the default 1 minute interval to ping Mahti for the job status is ok, but for actual production jobs, that could be increased to e.g. 1 hour. The status can always be refreshed manually.
 
 !["update"](../screens_20/7.png "upt")
 !["update"](../screens_20/7.png "upt")
