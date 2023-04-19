@@ -35,7 +35,7 @@ energy surface that is uniquely defined by the computational model
 we are going to use (B-O approx.).  The performance of the model
 often vary at different parts of the surface.
 
-!["Potential energy surface"](../screens_20/1.png "potential energy surface")
+!["Potential energy surface"](../screens_20/2.png "potential energy surface")
 
 ## Task 1: Launch TmoleX and create a new project
 
@@ -46,37 +46,68 @@ often vary at different parts of the surface.
 
 !["update"](../screens_20/4.png "Launch TmoleX GUI")
 
-#!["Some water"](img/10km.jpg "10000 water molecules"){width=30%}
 
-Remember to add both title AND alt-text for screen reader
-and accessibility!
+A complete Turbomole job comprises the sequence:
 
-# Columns 1
+* **Geometry - Atomic Attributes - Molecular Attributes - Method - Start Job - Results**
 
-<div class="column">
-- Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere
-  interdum sem.
-    - quisque ligula eros ullamcorper quis
-    - lacinia quis facilisis sed sapien
-- Mauris varius diam vitae arcu.
-</div>
 
-<div class="column">
-- Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit.
-- Sed augue orci, lacinia eu tincidunt et eleifend nec lacus.
-</div>
+## Task 1: Geometry -- Build formaldehyde
 
-# Columns 2
+Open the 3D builder, right-click on canvas and load formaldehyde from the library
+!["update"](../screens_20/5.png "upt")
 
-<div class="column">
-- Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere
-  interdum sem.
-    - quisque ligula eros ullamcorper quis
-    - lacinia quis facilisis sed sapien
-- Mauris varius diam vitae arcu.
-</div>
+Close the builder and continue to Atomic Attributes
 
-<div class="column">
-![Water](img/10km.jpg "10000 water molecules"){width=50%}
-</div>
+## Task 1: Atomic Attributes: Select basis set
+
+Select the default def-SV(P) basis set
+
+!["update"](../screens_20/6.png "upt")
+
+Continue to Molecular Attributes
+
+## Task 1: Molecular Attributes -- Generate initial guess MOs
+
+Generate initial MOs by doing an extended Hückel calculation
+
+!["update"](../screens_20/7.png "upt")
+
+Continue to Method
+
+## Task 1: Method -- Define your method
+
+Select the default method (ri-dft BP86/m3)
+
+!["update"](../screens_20/8.png "upt")
+
+Continue to Start Job
+
+## Task 1: Start Job -- Define your job type
+
+We want to do a geometry optimization of the ground state.
+
+*  **Note. How many CPUs?**
+
+!["update"](../screens_20/9.png "upt")
+
+Continue to run (network)
+
+## Task 1: Run(network) -- Setup remote job
+
+Here we define the remote (supercomputer) configuration:
+   * Which user account and project to use
+   * Where TURBOMOLE is installed
+   * etc.
+   * Note, this will differ for every user and machine
+   * In the Spring School 2023 we'll be using Mahti, but see here for the 
+     general instructions for Puhti [docs.csc.fi/apps/tmolex/](https://docs.csc.fi/apps/tmolex/)
+
+!["update"](../screens_20/10.png "upt")
+
+
+!["update"](../screens_20/7.png "upt")
+!["update"](../screens_20/7.png "upt")
+!["update"](../screens_20/7.png "upt")
+
 
