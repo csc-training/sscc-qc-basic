@@ -1,16 +1,16 @@
-# Tutorial 1: Basic DFT calculations using TmoleX and TURBOMOLE {.title}
+# Tutorial 1: Basic DFT calculations using TmoleX and TURBOMOLE
 
 * Spring School on Computational Chemistry 26-28 April 2023
-* Atte Sillanpää, CSC - IT center for Science LTD, based on the work of Nino Runeberg
+* Atte Sillanpää, CSC - IT center for Science LTD, based on the earlier work of Nino Runeberg
 
 ## Overview
 
-1 TmoleX is a graphical user interface to set up, launch and run jobs with TURBOMOLE
-1 This tutorial is made for use with TmoleX  23.1.0 and TUBOMOLE 7.7
-1 We'll use a locally installed TmoleX to set up a formaldehyde geometry optimization
-1 Configure and submit the job to be run on mahti.csc.fi supercomputer
-1 Perform a frequency calculation on the resulting structure
-1 Visualize results
+1. TmoleX is a graphical user interface to set up, launch and run jobs with TURBOMOLE
+1. This tutorial is made for use with TmoleX  23.1.0 and TUBOMOLE 7.7
+1. We'll use a locally installed TmoleX to set up a formaldehyde geometry optimization
+1. Configure and submit the job to be run on mahti.csc.fi supercomputer
+1. Perform a frequency calculation on the resulting structure
+1. Visualize results
 
 ## Remote usage setup
 
@@ -20,12 +20,12 @@
 
 ## Installing TmoleX
 
-* Download from [Dassault Systemes web site](https://www.3ds.com/products-services/biovia/products/molecular-modeling-simulation/solvation-chemistry/turbomoler/)
+* Download the DEMO from [Dassault Systemes web site](https://www.3ds.com/products-services/biovia/products/molecular-modeling-simulation/solvation-chemistry/turbomoler/)
   * Note, running TURBOMOLE requires a license, which CSC has for Puhti and Mahti.
   The GUI works for preparing/analysing inputs also without license, but please consult the license agreement.
-  * On the CSC workstations TmoleX is already installed, launch from icon/menu
-  * You can also use a version from your laptop
-  * Note: if you don't want to use the TmoleX GUI, you can follow the tutorial2, which uses the `define` command line tool to prepare the inputs
+* On the CSC workstations TmoleX is already installed, launch from icon/menu
+* You can also use a version from your laptop
+* Note: if you don't want to use the TmoleX GUI, you can follow the tutorial2, which uses the `define` command line tool to prepare the inputs
 
 !["Dassault Systemes website"](../screens_20/1.png "Dassault Systemes website")
 
@@ -139,10 +139,65 @@ Click **save machine** at the top right
 
 Click **Start Job** at the bottom right
 
-* For this tutorial, the default 1 minute interval to ping Mahti for the job status is ok, but for actual production jobs, that could be increased to e.g. 1 hour. The status can always be refreshed manually.
+* For this tutorial, the default 1 minute interval to ping Mahti for the job status is ok, but for actual production jobs, that could be increased to e.g. 1 hour. The status can always be refreshed manually. This job should finish in seconds.
 
-!["update"](../screens_20/7.png "upt")
-!["update"](../screens_20/7.png "upt")
-!["update"](../screens_20/7.png "upt")
+!["Refresh view"](../screens_20/11.png "upt")
+
+## Task 1: Results -- structure
+
+The geometry optimization needed 5 cycles to reach the stationary point on the energy surface.
+
+!["Optimized geometry"](../screens_20/12.png "upt")
+
+## Task 2: Results -- Gradients
+
+The length of the arrows show how steep the energy surface is in that direction
+
+!["update"](../screens_20/13.png "upt")
+
+At the end of the geometry optimization we have reached a stationary point
+(gradient smaller than a given threshold) that could correspond to:
+
+* a minimum **A**
+* inflection point **B**
+* a maximum **C**
+
+!["gradients"](../screens_20/gradient.png "upt")
+
+The nature of the stationary point can be deduced from the curvature (Hessian).
+A positive curvature corresponds to a minimum, a negative to a maximum.
+
+## Task 1: Vibrational spectrum
+
+In order to verify that the stationary point is a true minimum
+(positive curvature in all directions = positive frequencies)
+do a frequency calc (Reuse data \
+by just hitting "Start new job by using current data as input" )
+
+!["Start new job from previous results"](../screens_20/14.png "upt")
+
+In the Job typ list select "Spectra & Excited States --> IR & vibrational frequencies"
+
+!["Select of frequency calculation"](../screens_20/15.png "upt")
+
+Select "Run (Network)" to launch the job.
+
+Once the job finishes (you can refresh the view - wait for results to get downloaded).
+You can also log in on the supercomputer and follow the job status with slurm commands
+directly, e.g. with:
+
+```bash
+squeue -u $USER # my current running or queuing jobs
+sacct           # my ended jobs for the last day
+sacct -X -o jobid,start,jobname,state,elapsed,alloc # last jobs with custom fields
+```
+
+All calculated frequencies are positive indicating that the structure corresponds to a true minimum.
+
+!["Frequency calculation results"](../screens_20/16.png "upt")
+
+
+
+
 
 
