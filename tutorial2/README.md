@@ -404,7 +404,8 @@ sbatch jobscript.sh
 ## Examine how long it took to run the job
 
 You will find many numbers. Ones you can get with `sacct`. Find the JOBID
-(a long number that identifies your job) and give
+(a long number that identifies your job ((tip: look at the slurm output
+or use `sacct` ... or more brutally leave out `-j JOBID`)) and give
 
 ```bash
 sacct -X -j JOBID -o state,start,alloc,elapsed,cputime
@@ -414,8 +415,8 @@ sacct -X -j JOBID -o state,start,alloc,elapsed,cputime
 
 ```
 
-And in the pentultimate column you'll see how long the queuing system was keeping the resources for you
-(the walltime) and that times the number of reserved cores.
+In the pentultimate column you'll see how long the queuing system was keeping the resources for you
+(Elapsed == the walltime) and in the final column that times the number of reserved cores.
 
 Two other numbers you'll get from the `singlepoint` output log file. Look for the word `time`
 and you'll see something like this
@@ -443,7 +444,7 @@ the number of cores used.
 
 * Why do the numbers differ?
 * Why do these number matter?
-* Are these number accurate?
+* Are these numbers accurate?
 * How to get more accurate information?
 * What else affects the performance?
 * Is Mahti the right place for these kinds of calculations?
