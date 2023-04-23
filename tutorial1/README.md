@@ -60,10 +60,16 @@ on Mahti for the calculations. Accept the dialog.
 
 !["update"](../screens_20/4.png "Launch TmoleX GUI")
 
-
 A complete Turbomole job comprises the sequence:
 
 * **Geometry - Atomic Attributes - Molecular Attributes - Method - Start Job - Results**
+
+The TURBOMOLE philosophy or program structure is based on running different
+"modules" one after another. The following diagram
+[taken from a TURBOMOLE tutorial](https://www.turbomole.org/wp-content/uploads/2019/10/Tutorial_7-4.pdf)
+highlights the most typical ones and their relation.
+
+!["TURBOMOLE modules"](../screens_20/../tmoleDefineFlow.png "TURBOMOLE modules")
 
 
 ## Task 1: Geometry -- Build formaldehyde
@@ -183,8 +189,8 @@ A positive curvature corresponds to a minimum, a negative to a maximum.
 
 In order to verify that the stationary point is a true minimum
 (positive curvature in all directions = positive frequencies)
-do a frequency calc (Reuse data \
-by just hitting "Start new job by using current data as input" )
+
+Start a frequency calculation (Reuse data by just hitting "Start new job by using current data as input" )
 
 !["Start new job from previous results"](../screens_20/14.png "upt")
 
@@ -195,13 +201,28 @@ In the "Job typ" list select "Spectra & Excited States --> IR & vibrational freq
 Select "Run (Network)" to launch the job.
 
 Once the job finishes (you can refresh the view - wait for results to get downloaded).
-You can also log in on the supercomputer and follow the job status with slurm commands
+You can also log in on the supercomputer
+
+```bash
+ssh -Y your-username@mahti.csc.fi
+```
+
+and follow the job status with slurm commands
 directly, e.g. with:
 
 ```bash
 squeue -u $USER # my current running or queuing jobs
 sacct           # my ended jobs for the last day
 sacct -X -o jobid,start,jobname,state,elapsed,alloc # last jobs with custom fields
+```
+
+A local terminal on Mahti also gives access to some additional tools and scripts
+that come with TURBOMOLE that can be nice to follow or post process the data. You
+can find these e.g.
+
+```bash
+module load turbomole
+ls $TURBODIR/scripts/
 ```
 
 All calculated frequencies are positive indicating that the structure corresponds to a true minimum.
