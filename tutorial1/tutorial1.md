@@ -24,7 +24,7 @@
 * The CSC TmoleX page has more information.
 * The overall CSC supercomputer environment can be found in the [Docs CSC user guide](https://docs.csc.fi/computing/available-systems/)
   or in the [CSC Computing environment self learning course materials](https://csc-training.github.io/csc-env-eff/).
-
+* An option is to use `ssh` and login directly on the Mahti login node, and prepare the job with `define` (see tutorial2).
 
 !["Using TmoleX network scheme"](../screens_20/tmolex-and-mahti.svg "Using TmoleX network scheme")
 
@@ -35,7 +35,6 @@
   The GUI works for preparing/analysing inputs also without license, but please consult the license agreement.
 * On the CSC workstations TmoleX is already installed, launch from icon/menu
 * You can also use a version from your laptop
-* Note: if you don't want to use the TmoleX GUI, you can follow the tutorial2, which uses the `define` command line tool to prepare the inputs
 
 !["Dassault Systemes website"](../screens_20/1.png "Dassault Systemes website")
 
