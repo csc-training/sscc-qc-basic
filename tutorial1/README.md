@@ -24,7 +24,7 @@
 * The CSC TmoleX page has more information.
 * The overall CSC supercomputer environment can be found in the [Docs CSC user guide](https://docs.csc.fi/computing/available-systems/)
   or in the [CSC Computing environment self learning course materials](https://csc-training.github.io/csc-env-eff/).
-* An option is to use `ssh` and login directly on the Mahti login node, and prepare the job with `define` (see tutorial2).
+* An option is to use `ssh` and login directly on the Mahti login node, and prepare the job with `define`.
 
 !["Using TmoleX network scheme"](../screens_20/tmolex-and-mahti.svg "Using TmoleX network scheme")
 
@@ -119,6 +119,7 @@ In the new dialog, we define the remote (supercomputer) configuration:
    * In the Spring School 2023 we'll be using Mahti, but see here for the 
      general instructions for Puhti [docs.csc.fi/apps/tmolex/](https://docs.csc.fi/apps/tmolex/)
    * **important** Replace `your-username` with your actual username on CSC supercomputer! Also, in the `work-directory` field.
+   * **Note** The "Script" box doesn't show all the commands, see the instructions below the picture.
 
 !["update"](../screens_20/10.png "upt")
 
@@ -158,7 +159,7 @@ The geometry optimization needed 5 cycles to reach the stationary point on the e
 
 !["Optimized geometry"](../screens_20/12.png "upt")
 
-## Task 2: Results -- Gradients
+## Task 1: Results -- Gradients
 
 The length of the arrows show how steep the energy surface is in that direction
 
@@ -166,6 +167,8 @@ The length of the arrows show how steep the energy surface is in that direction
 
 At the end of the geometry optimization we have reached a stationary point
 (gradient smaller than a given threshold) that could correspond to:
+
+!["Stationary points on potential energy surface"](../screens_20/stationaryPoints.png "Stationary points on potential energy surface")
 
 * a minimum **A**
 * inflection point **B**
@@ -185,7 +188,7 @@ by just hitting "Start new job by using current data as input" )
 
 !["Start new job from previous results"](../screens_20/14.png "upt")
 
-In the Job typ list select "Spectra & Excited States --> IR & vibrational frequencies"
+In the "Job typ" list select "Spectra & Excited States --> IR & vibrational frequencies"
 
 !["Select of frequency calculation"](../screens_20/15.png "upt")
 
@@ -204,6 +207,14 @@ sacct -X -o jobid,start,jobname,state,elapsed,alloc # last jobs with custom fiel
 All calculated frequencies are positive indicating that the structure corresponds to a true minimum.
 
 !["Frequency calculation results"](../screens_20/16.png "upt")
+
+The zero Kelvin minimum energy structure in a vacuum is often the starting point in solving
+chemical problems. It often represents surprisingly well the molecular properties despite
+all the approximations made. What could you use this information for? How to validate or improve
+the model?
+
+This ends the tutorial.
+
 
 
 
