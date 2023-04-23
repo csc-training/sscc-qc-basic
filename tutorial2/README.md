@@ -432,7 +432,7 @@ dividing the 1 core time with N core time. Linear speedup would equal
 the number of cores used.
 
 
-|  cores     |   walltime \\ (slurm) | cpu-time <br /> logile    | wall-time \ logfile | speedup \ wall | speedup \ logfile |
+|  cores     |   walltime (slurm) | cpu-time from logfile | wall-time from logfile | speedup slurm | speedup cpu-time from logfile |
 | ---------- | ----------- | ----------: | --------: | ------: | ------: |
 |    1       |             |             |           |         |         |
 |    2       |             |             |           |         |         |
