@@ -431,15 +431,8 @@ Tabulate the values into a table. You can calculate the "speedup" by
 dividing the 1 core time with N core time. Linear speedup would equal
 the number of cores used.
 
-|  cores     |   walltime  | cpu-time    | wall-time | speedup | speedup |
-|            |   (slurm)   | logfile     |  logfile  |  wall   |  logile |
-| ---------- | ----------- | ----------: | --------: | ------: | ------: |
-|    1       |             |             |           |         |         |
-|    2       |             |             |           |         |         |
-|    4       |             |             |           |         |         |
-|    8       |             |             |           |         |         |
 
-|  cores     |   walltime \ (slurm) | cpu-time \ logile    | wall-time \ logfile | speedup \ wall | speedup \ logfile |
+|  cores     |   walltime \\ (slurm) | cpu-time <br /> logile    | wall-time \ logfile | speedup \ wall | speedup \ logfile |
 | ---------- | ----------- | ----------: | --------: | ------: | ------: |
 |    1       |             |             |           |         |         |
 |    2       |             |             |           |         |         |
