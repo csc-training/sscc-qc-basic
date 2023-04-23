@@ -12,11 +12,21 @@
 1. Perform a frequency calculation on the resulting structure
 1. Visualize results
 
-## Remote usage setup
+## Remote usage setup at CSC
 
-* kuva tmolexista läppärillä, login node, batch job, compute node, paluu
-* define vaihtoehtona
-* linkki env-effiin (ympäristö, batch stuff)
+* The model system and input parameters for the TUBOMOLE job are specified on your local
+  computer using the TmoleX GUI.
+* A connection to supercomputer mahti.csc.fi is set up
+  in TmoleX using ssh. (The password is cleared upon closing the software).
+* Installation directory and supercomputer specific options are set in TmoleX so that the GUI can
+  launch the job for the queueing system (SLURM) on the Mahti login node
+* TmoleX can follow progress and once the job can completed, dowload the results to the local computer
+* The CSC TmoleX page has more information.
+* The overall CSC supercomputer environment can be found in the [Docs CSC user guide](https://docs.csc.fi/computing/available-systems/)
+  or in the [CSC Computing environment self learning course materials](https://csc-training.github.io/csc-env-eff/).
+
+
+!["Using TmoleX network scheme"](../screens_20/tmolex-and-mahti.svg "Using TmoleX network scheme")
 
 ## Installing TmoleX
 
