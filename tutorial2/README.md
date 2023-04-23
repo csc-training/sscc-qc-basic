@@ -1,18 +1,7 @@
 # Tutorial 2: Find the highest formation energy of given isomers
 
-
-tut kolme
-valkatkaa näistä eri moltsut, koittakaa etsiä stabiilein
-mihin tulokset? / miten sais suhteellisen stabiilisuuden kj/mol?
-komentorivi kikat seuraamiseen
-* no, cat energy
-* cgnce?
-* eiger
-* ...
-
-
 * Spring School on Computational Chemistry 26-28 April 2023
-* Atte Sillanpää, CSC - IT center for Science LTD, based on the earlier work of Nino Runeberg
+* Atte Sillanpää, CSC - IT center for Science LTD
 
 ## Overview
 
@@ -126,7 +115,7 @@ which will print out information and prompts for us to react.
 
 ```
 
-Accent this with `enter`.
+Accept this with `enter`.
 
 Next, `define` will ask for a title
 
@@ -139,7 +128,9 @@ Next, `define` will ask for a title
 which you can give or skip by another `enter`. Then we'll get into business.
 
 
-## Define will ask the same questions that were given on the TmoleX GUI. We start with the geometry. To load the geometry, give
+## Setting up geometry 
+
+Define will ask the same questions that were given on the TmoleX GUI. We start with the geometry. To load the geometry, give
 
 The relevant line in the options is
 
@@ -218,7 +209,7 @@ You will be taken to th method selection.
 
 ## Choose the job type from the general menu
 
-We want to run a Density Functional Calculation and the "resolution of identity" approximation
+We want to run a Density Functional Calculation and use the "resolution of identity" approximation
 which speeds up the calculation with minimal compromise in accuracy. The relevant section in the menu
 
 ```
@@ -226,7 +217,7 @@ which speeds up the calculation with minimal compromise in accuracy. The relevan
  ri     : RI Parameters
 ```
 
-First choose `dft` enter and then in the new menu select `on`. Hit enter once more to get
+First choose `dft` , enter and then in the new menu select `on`. Hit enter once more to get
 back to the general menu. Then select `ri` and similarly in the new menu `on` and enter to
 get back to the general menu.
 
@@ -240,8 +231,9 @@ for TURBOMOLE can be found on [CSC's user guide](https://docs.csc.fi/apps/turbom
 for both Puhti and Mahti and for some typical different more detailed use cases.
 
 To be used in the Spring School 2023, please use the template below. Open a new
-file (e.g. `jobscript.sh`)in the directory where you have the TURBOMOLE input files, paste the below
-template there and edit to match your needs.
+file (e.g. `jobscript.sh`) with some editor (e.g. `nano`)in the directory where
+you have the TURBOMOLE input files, paste the below
+template and edit to match your needs.
 
 ```bash
 #!/bin/bash
@@ -250,7 +242,7 @@ template there and edit to match your needs.
 #SBATCH --ntasks-per-node=4         # MPI tasks per node
 #SBATCH --account=project_2006657   # the project to be billed
 #SBATCH --reservation=sscc_thu_int  # available only on Thursday 27.4.2023
-#SBATCH --time=00:30:00             # time as `hh:mm:ss`
+#SBATCH --time=00:10:00             # time as `hh:mm:ss`
 
 export PARA_ARCH=MPI          # use MPI
 module load turbomole/7.7
@@ -273,7 +265,7 @@ sbatch jobscript.sh
 You can follow the progress of the job from the files in the directory
 or with the slurm commands `sacct` or `squeue -u $USER`. Note, the slurm
 commands report twice the number of CPU cores since in Mahti it's possible
-to run two virtual cores on a physical core.
+to run two virtual cores on a physical core (hyperthreading).
 
 Once the job has finished look at the final SCF energy from the end
 of the `energy` file or `total energy` towards the end of the `job.last` file.
@@ -294,7 +286,8 @@ On your local (linux or MAC) computer (or some terminal program on Windows)
 scp -r your-username@mahti.csc.fi:/scratch/project_200657/your-username/XXX .
 ```
 
-where XXX is the folder with the results. 
+where XXX is the folder with the results. In the TmoleX GUI, select "File" -->
+"Open Job/Control File".
 
 ### Directly on Mahti
 
