@@ -439,6 +439,13 @@ the number of cores used.
 |    4       |             |             |           |         |         |
 |    8       |             |             |           |         |         |
 
+|  cores     |   walltime \ (slurm) | cpu-time \ logile    | wall-time \ logfile | speedup \ wall | speedup \ logfile |
+| ---------- | ----------- | ----------: | --------: | ------: | ------: |
+|    1       |             |             |           |         |         |
+|    2       |             |             |           |         |         |
+|    4       |             |             |           |         |         |
+|    8       |             |             |           |         |         |
+
 
 ## Discussion
 
