@@ -69,7 +69,7 @@ The TURBOMOLE philosophy or program structure is based on running different
 [taken from a TURBOMOLE tutorial](https://www.turbomole.org/wp-content/uploads/2019/10/Tutorial_7-4.pdf)
 highlights the most typical ones and their relation.
 
-!["TURBOMOLE modules"](../screens_20/../tmoleDefineFlow.png "TURBOMOLE modules")
+!["TURBOMOLE modules"](../screens_20/tmoleDefineFlow.png "TURBOMOLE modules")
 
 
 ## Task 1: Geometry -- Build formaldehyde
@@ -207,7 +207,8 @@ You can also log in on the supercomputer
 ssh -Y your-username@mahti.csc.fi
 ```
 
-and follow the job status with slurm commands
+and follow the job status with slurm commands more on these e.g. in
+(CSC Computing Environment self learning materials)[https://csc-training.github.io/csc-env-eff/hands-on/batch_resources/tutorial_sacct_and_seff.html]
 directly, e.g. with:
 
 ```bash
@@ -223,6 +224,8 @@ can find these e.g.
 ```bash
 module load turbomole
 ls $TURBODIR/scripts/
+cgnce -h # to get help on usage
+actual -h 
 ```
 
 All calculated frequencies are positive indicating that the structure corresponds to a true minimum.
