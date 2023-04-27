@@ -176,7 +176,7 @@ As the first geometry optimization let's use a simple and quick basis set `def-S
 To select that for all atoms
 
 ```bash
-bb allfi def-SV(P)
+bb all def-SV(P)
 ```
 
 Move to next step with `*`.
