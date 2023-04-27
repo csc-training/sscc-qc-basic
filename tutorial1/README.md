@@ -133,7 +133,7 @@ Use these:
 
 * Machine/IP: `mahti.csc.fi`
 * User: `<your-username>`
-* Work directory: `/scratch/project\_2006657/<your-username>`
+* Work directory: `/scratch/project_2006657/<your-username>`
 * TURBOMOLE directory: `/appl/soft/chem/turbomole/7.7/TURBOMOLE`
 * Use queuing system (tick)
 * Submit with: `sbatch`
