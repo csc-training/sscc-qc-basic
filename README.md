@@ -6,6 +6,10 @@ engine running on a supercomputer. Note, that the latter
 requires a license, which is available for academic
 users on the CSC supercomputers.
 
+## [Preparations](./preparations/README.md)
+
+* Setting up TmoleX either via a Browser or by installing it on your own laptop 
+
 ## [Tutorial 1](./tutorial1/README.md)
 
 * Simple DFT calculation using TmoleX to set up the geometry and job specifics

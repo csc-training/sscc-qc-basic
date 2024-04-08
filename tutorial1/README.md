@@ -1,42 +1,33 @@
 # Tutorial 1: Basic DFT calculations using TmoleX and TURBOMOLE
 
-* Spring School on Computational Chemistry 26-28 April 2023
-* Atte Sillanpää, CSC - IT center for Science LTD, based on the earlier work of Nino Runeberg
+* Spring School on Computational Chemistry 17-19 April 2024
+* Nino Runeberg, CSC - IT center for Science Ltd, based on the earlier work of Atte Sillanpää
 
 ## Overview
 
 1. TmoleX is a graphical user interface to set up, launch and run jobs with TURBOMOLE
-1. This tutorial is made for use with TmoleX  23.1.0 and TUBOMOLE 7.7
-1. We'll use a locally installed TmoleX to set up a formaldehyde geometry optimization
-1. Configure and submit the job to be run on mahti.csc.fi supercomputer
+1. This tutorial is made for use with TmoleX 24 and TUBOMOLE 7.8
+1. We'll use TmoleX to set up a formaldehyde geometry optimization
+1. Configure and submit the job to be run on puhti.csc.fi supercomputer
 1. Perform a frequency calculation on the resulting structure
 1. Visualize results
 
 ## Remote usage setup at CSC
 
-* The model system and input parameters for the TUBOMOLE job are specified on your local
-  computer using the TmoleX GUI.
-* A connection to supercomputer mahti.csc.fi is set up
-  in TmoleX using ssh. (The password is cleared upon closing the software).
+* TmoleX can be used either via a browser or by running it on your local 
+  computer (see [Preparations](../preparations/README.md) )   
+* The model system and input parameters for the TUBOMOLE job are specified  using TmoleX
+* A connection to supercomputer puhti.csc.fi is set up
+  in TmoleX using ssh. (The password is cleared upon closing the software)
 * Installation directory and supercomputer specific options are set in TmoleX so that the GUI can
-  launch the job for the queueing system (SLURM) on the Mahti login node
+  launch the job for the queueing system (SLURM) on the Puhti
 * TmoleX can follow progress and once the job can completed, dowload the results to the local computer
 * The CSC TmoleX page has more information.
 * The overall CSC supercomputer environment can be found in the [Docs CSC user guide](https://docs.csc.fi/computing/available-systems/)
   or in the [CSC Computing environment self learning course materials](https://csc-training.github.io/csc-env-eff/).
 * An option is to use `ssh` and login directly on the Mahti login node, and prepare the job with `define`.
-
+d, launch from icon/menu
 !["Using TmoleX network scheme"](../screens_20/tmolex-and-mahti.svg "Using TmoleX network scheme")
-
-## Installing TmoleX
-
-* Download the DEMO from [Dassault Systemes web site](https://www.3ds.com/products-services/biovia/products/molecular-modeling-simulation/solvation-chemistry/turbomoler/)
-  * Note, running TURBOMOLE requires a license, which CSC has for Puhti and Mahti.
-  The GUI works for preparing/analysing inputs also without license, but please consult the license agreement.
-* On the CSC workstations TmoleX is already installed, launch from icon/menu
-* You can also use a version from your laptop
-
-!["Dassault Systemes website"](../screens_20/1.png "Dassault Systemes website")
 
 ## Task 1: Optimize the ground state for formaldehyde
 
@@ -50,11 +41,30 @@ often vary at different parts of the surface.
 
 ## Task 1: Launch TmoleX and create a new project
 
+### Use via your browser
+
+Go to [puhti.csc.fi](https://puhti.csc.fi/) using a web browser and login using
+your CSC/Haka user account.
+
+1. From there [launch a Desktop](https://docs.csc.fi/computing/webinterface/desktop/#launching). 
+2. Open a `Terminal` and load the TURBOMOLE module `module load turbomole/7.8`.
+3. Start TmoleX with the command `TmoleX24`.
+4. Select `New Project` and define a suitable project in the `File Name` slot
+   (e.g. `/scratch/project_2006657/$USER/SSCC24_project`).
+5. Define your system and type of calculation. 
+6. Small jobs can be run interactively: Start Job -> Run (local)
+7. Larger jobs should be run as batch jobs: Start Job -> Run (network). Example
+   settings are given below. Note that passwordless connection doesn't work via
+   the browser. Remember to save the settings using `Save Machine`.
+ 
+###  Use locally installed TmoleX
+
+* If you have installed TmoleX on your own laptop, launch it from icon/menu
+* On the CSC workstations TmoleX is already installed, launch it from icon/menu
 * Note. TmoleX warns about not finding a license. This is ok. We'll use the TURBOMOLE license
 on Mahti for the calculations. Accept the dialog.
 
 !["Launch TmoleX GUI"](../screens_20/3.png "Launch TmoleX GUI")
-
 
 ## Task 1: Define your first turbomole job
 
