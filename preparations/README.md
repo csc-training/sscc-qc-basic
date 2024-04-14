@@ -15,8 +15,8 @@ your CSC/Haka user account.
 ![Slurm settings]
 1. From there [launch a Desktop](https://docs.csc.fi/computing/webinterface/desktop/#launching).
 ![Launch Desktop](../img/ood_01.png)		
-   * Activate the `Reservation-> sscc_thu_small` that gives access to resourses specially dedicated for this course 
 ![Launch Desktop](../img/ood_02.png)
+   * Activate the `Reservation-> sscc_thu_small` that gives access to resourses specially dedicated for this course 
    * Select the project `project_2006657(CompChem Training)` that is used for this course 
    * Go with the default resourses	
    * Once resourses have been allocated `Launch Desktop`  

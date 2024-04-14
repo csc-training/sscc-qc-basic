@@ -52,7 +52,7 @@ your CSC/Haka user account.
 !["Launch Tmolex24"](../img/ood_03.png)
 4. Select `New Project` and define a suitable project in the `File Name` slot
    (e.g. `/scratch/project_2006657/<your-username>/qc_tutorial1`).
-!["Tmolex24 new project"](../img/pesurf.png "potential energy surface")
+!["Tmolex24 new project"](../img/ood_04.png)
 5. Define your system and type of calculation. 
 6. Small jobs can be run interactively: Start Job -> Run (local)
 7. Larger jobs should be run as batch jobs: Start Job -> Run (network). Example
@@ -64,13 +64,14 @@ your CSC/Haka user account.
 * If you have installed TmoleX on your own laptop, launch it from icon/menu
 * On the CSC workstations TmoleX is already installed, launch it from icon/menu
 * Note. TmoleX warns about not finding a license. This is ok. We'll use the TURBOMOLE license
-on Mahti for the calculations. Accept the dialog.
+on Puhti for the calculations. Accept the dialog.
+* Define a suitable project directory (e.g. `~/qc_tutorial1`).
 
-!["Launch TmoleX GUI"](../screens_20/3.png "Launch TmoleX GUI")
+!["Launch TmoleX GUI"](../img/local_1.png)
 
 ## Task 1: Define your first turbomole job
 
-!["update"](../screens_20/4.png "Launch TmoleX GUI")
+!["TmoleX steps"](../img/local_2.png)
 
 A complete Turbomole job comprises the sequence:
 
@@ -81,13 +82,13 @@ The TURBOMOLE philosophy or program structure is based on running different
 [taken from a TURBOMOLE tutorial](https://www.turbomole.org/wp-content/uploads/2019/10/Tutorial_7-4.pdf)
 highlights the most typical ones and their relation.
 
-!["TURBOMOLE modules"](../screens_20/tmoleDefineFlow.png "TURBOMOLE modules")
+!["TURBOMOLE modules"](../img/tmoleDefineFlow.png "TURBOMOLE modules")
 
 
 ## Task 1: Geometry -- Build formaldehyde
 
 Open the 3D builder, right-click on canvas and load formaldehyde from the library
-!["update"](../screens_20/5.png "upt")
+!["update"](../img/local_3.png)
 
 Close the builder and continue to Atomic Attributes
 
@@ -95,7 +96,7 @@ Close the builder and continue to Atomic Attributes
 
 Select the default def-SV(P) basis set
 
-!["update"](../screens_20/6.png "upt")
+!["update"](../img/local_4.png)	
 
 Continue to Molecular Attributes
 
@@ -103,7 +104,7 @@ Continue to Molecular Attributes
 
 Generate initial MOs by doing an extended Hückel calculation
 
-!["update"](../screens_20/7.png "upt")
+!["update"](../img/local_5.png)
 
 Continue to Method
 
@@ -111,7 +112,7 @@ Continue to Method
 
 Select the default method (ri-dft BP86/m3)
 
-!["update"](../screens_20/8.png "upt")
+!["update"](../img/local_6.png)
 
 Continue to Start Job
 
@@ -119,16 +120,14 @@ Continue to Start Job
 
 We want to do a geometry optimization of the ground state.
 
-*  **Note. How many CPUs?**
-
-!["update"](../screens_20/9.png "upt")
+!["update"](../img/local_7.png)
 
 Continue to run (network)
 
 ## Task 1: Run(network) -- Setup remote job
 
-Click **save** as the first dialog prompts for the folder to use for the job files.
-
+Click **Save** as the first dialog prompts for the folder to use for the job files.
+!["update"](../img/local_8.png)
 In the new dialog, we define the remote (supercomputer) configuration:
    * Which user account and project to use
    * Where TURBOMOLE is installed
@@ -136,9 +135,8 @@ In the new dialog, we define the remote (supercomputer) configuration:
    * Note, this will differ for every user and machine
    * General instructions for Puhti [docs.csc.fi/apps/tmolex/](https://docs.csc.fi/apps/tmolex/)
    * **important** Replace `your-username` with your actual username on CSC supercomputer! Also, in the `work-directory` field.
-   * **Note** The "Script" box doesn't show all the commands, see the instructions below the picture.
 
-!["update"](../screens_20/10.png "upt")
+!["update"](../img/local_9.png)
 
 Use these:
 
@@ -153,39 +151,47 @@ Use these:
 Script before job execution:
 
 ```bash
+#SBATCH --reservation=sscc_thu_small
 #SBATCH --partition=small
-#SBATCH --account=project_2006657
-#SBATCH --time=00:10:00
-#SBATCH --ntasks=1
-#SBATCH --reservation=sscc_thu_int
-export MPI_USESRUN=1
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1             # MPI tasks per node
+#SBATCH --account=project_2006657       # insert here the project to be billed 
+#SBATCH --time=00:30:00                 # time as `hh:mm:ss`
+source /appl/profile/zz-csc-env.sh
+ulimit -s unlimited
+export PARA_ARCH=MPI                    # use MPI
+module load turbomole/7.8
 export SLURM_CPU_BIND=none
+export PARNODES=$SLURM_NTASKS           # for MPI
+export PATH=$TURBODIR/bin/`$TURBODIR/scripts/sysname`:$PATH
 ```
 
-Click **save machine** at the top right
+* Check that your password is recognized by clicking `Check Password Settings` 
+
+* Click **save machine** at the top right
 
 Click **Start Job** at the bottom right
 
 * For this tutorial, the default 1 minute interval to ping Puhti for the job status is ok, but for actual production jobs, that could be increased to e.g. 1 hour. The status can always be refreshed manually. This job should finish in seconds.
 
-!["Refresh view"](../screens_20/11.png "upt")
+!["update"](../img/local_12.png)
 
 ## Task 1: Results -- structure
 
-The geometry optimization needed 5 cycles to reach the stationary point on the energy surface.
+The geometry optimization needed 6 cycles to reach the stationary point on the energy surface.
 
-!["Optimized geometry"](../screens_20/12.png "upt")
+!["Optimized geometry"](../img/local_13.png)
 
 ## Task 1: Results -- Gradients
 
 The length of the arrows show how steep the energy surface is in that direction
 
-!["update"](../screens_20/13.png "upt")
+!["update"](../img/local_14.png)
 
 At the end of the geometry optimization we have reached a stationary point
 (gradient smaller than a given threshold) that could correspond to:
 
-!["Stationary points on potential energy surface"](../screens_20/stationaryPoints.png "Stationary points on potential energy surface")
+!["Stationary points on potential energy surface"](../img/stationaryPoints.png "Stationary points on potential energy surface")
 
 * a minimum **A**
 * inflection point **B**
