@@ -1,42 +1,28 @@
 # Tutorial 2: Find the highest formation energy of given isomers
 
-* Spring School on Computational Chemistry 26-28 April 2023
-* Atte Sillanpää, CSC - IT center for Science LTD
+* Spring School on Computational Chemistry 17-19 April 2024
+* Nino Runeberg, CSC - IT center for Science Ltd, based on the earlier work of Atte Sillanpää
 
 ## Overview
 
-1. Pick one molecule out of the 31 with the same composition (C11H14O2N2)
-1. Mark your name on the row 
-1. Set up a calculation to get the minimum energy conformation
-1. Tabulate the total energy in the table above with the molecule names
+1. We have downloaded from [PubChem](https://pubchem.ncbi.nlm.nih.gov/) a set of molecules having the same molecular formula C<sub>11</sub>H<sub>14</sub>O<sub>2</sub>N<sub>2</sub> . 
+1. From the original set of about 14700 molecules we have selected 31 structures.  
+   Their corresponding [SMILES](https://en.wikipedia.org/wiki/Simplified_molecular-input_line-entry_system) strings are  given in the table [https://siili.rahtiapp.fi/Duf0GbqtRVGrz2dZbPi5qg](https://siili.rahtiapp.fi/Duf0GbqtRVGrz2dZbPi5qg?view) 
+1. Pick any of the free structures in that table and mark your name on the row (click on side-by-side icon at top left to edit ) 
+1. Set up a calculation to get the minimum energy conformation according to the same recipe we used for formaldehyde
+1. Tabulate the total energy of the corresponding optimized structure
 1. Can you explain why some isomers are lower in energy than others?
 1. **Bonus** Would the order change if you'd change the model? Improve basis set? Add an implicit solvent model? Include entropy estimate?
 
-## Login to Mahti and pick a molecule for yourself
+## Open TmoleX and create a new Project
 
-Open a terminal (right click at the background on Dogmi workstations) and login to Mahti
-
-```bash
-ssh -Y your-username@mahti.csc.fi
-```
-
-Load the TURBOMOLE module and navigate to the `scratch` area (disk area to perform computations)
-
-```bash
-module load turbomole/7.7
-cd /scratch/project_2006657
-```
-
-Create a directory for yourself so that your results will not overwrite each other (remember
-to change `your-username`to your actual username) 
-
-```bash
-mkdir your-username
-```
-
-The isomers are available in the directory `/scratch/project_2006657/xyz` In the same directory
-there's a `table.csv` with the name of the molecule, and some other columns. Write your name on the
-row of the molecule you want to calculate. Pick different molecules. Use e.g. `nano` editor.
+1. Launch TmoleX and create a new project in a suitable directory.  
+   * If you use the Puhti desktop then use something like  `/scratch/project_2006657/<your-username>/qc_tutorial2`. Remember to 
+replace  `your-username` with your actual username in order to make it a unique and not interfering with other participants projects.
+  * If you use a locally installed TmoleX then define the new project under your home directory, e.g. `~/qc_tutorial2` .
+1. A new job is initiated within your new TmoleX project. In the first `Geometry` subsection you can find a slot `SMILES to 3D`. 
+1. Copy and paste your SMILES string in there. Pushing the buttons should launch the TmoleX viewer showing the 3D structure of the molecule corresponding to your SMILES string.
+1. Since the conversion from `SMILES` to `xyz` is quite rough  
 
 ```bash
 nano /scratch/project_2006657/xyz/table.csv

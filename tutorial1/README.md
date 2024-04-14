@@ -25,9 +25,9 @@
 * The CSC TmoleX page has more information.
 * The overall CSC supercomputer environment can be found in the [Docs CSC user guide](https://docs.csc.fi/computing/available-systems/)
   or in the [CSC Computing environment self learning course materials](https://csc-training.github.io/csc-env-eff/).
-* An option is to use `ssh` and login directly on the Mahti login node, and prepare the job with `define`.
+* An option is to use `ssh` and login directly on the Puhti login node, and prepare the job with `define`.
 d, launch from icon/menu
-!["Using TmoleX network scheme"](../screens_20/tmolex-and-mahti.svg "Using TmoleX network scheme")
+!["Using TmoleX network scheme"](../img/tmolex-and-puhti.svg "Using TmoleX network scheme")
 
 ## Task 1: Optimize the ground state for formaldehyde
 
@@ -37,7 +37,7 @@ energy surface that is uniquely defined by the computational model
 we are going to use (B-O approx.).  The performance of the model
 often vary at different parts of the surface.
 
-!["Potential energy surface"](../screens_20/pesurf.png "potential energy surface")
+!["Potential energy surface"](../img/pesurf.png "potential energy surface")
 
 ## Task 1: Launch TmoleX and create a new project
 
@@ -49,8 +49,10 @@ your CSC/Haka user account.
 1. From there [launch a Desktop](https://docs.csc.fi/computing/webinterface/desktop/#launching). 
 2. Open a `Terminal` and load the TURBOMOLE module `module load turbomole/7.8`.
 3. Start TmoleX with the command `TmoleX24`.
+!["Launch Tmolex24"](../img/ood_03.png)
 4. Select `New Project` and define a suitable project in the `File Name` slot
-   (e.g. `/scratch/project_2006657/$USER/SSCC24_project`).
+   (e.g. `/scratch/project_2006657/<your-username>/qc_tutorial1`).
+!["Tmolex24 new project"](../img/pesurf.png "potential energy surface")
 5. Define your system and type of calculation. 
 6. Small jobs can be run interactively: Start Job -> Run (local)
 7. Larger jobs should be run as batch jobs: Start Job -> Run (network). Example
@@ -132,8 +134,7 @@ In the new dialog, we define the remote (supercomputer) configuration:
    * Where TURBOMOLE is installed
    * etc.
    * Note, this will differ for every user and machine
-   * In the Spring School 2023 we'll be using Mahti, but see here for the 
-     general instructions for Puhti [docs.csc.fi/apps/tmolex/](https://docs.csc.fi/apps/tmolex/)
+   * General instructions for Puhti [docs.csc.fi/apps/tmolex/](https://docs.csc.fi/apps/tmolex/)
    * **important** Replace `your-username` with your actual username on CSC supercomputer! Also, in the `work-directory` field.
    * **Note** The "Script" box doesn't show all the commands, see the instructions below the picture.
 
@@ -141,10 +142,10 @@ In the new dialog, we define the remote (supercomputer) configuration:
 
 Use these:
 
-* Machine/IP: `mahti.csc.fi`
+* Machine/IP: `puhti.csc.fi`
 * User: `<your-username>`
 * Work directory: `/scratch/project_2006657/<your-username>`
-* TURBOMOLE directory: `/appl/soft/chem/turbomole/7.7/TURBOMOLE`
+* TURBOMOLE directory: `/appl/soft/chem/turbomole/7.8/TURBOMOLE`
 * Use queuing system (tick)
 * Submit with: `sbatch`
 * Check status: `squeue -u $USER`
@@ -152,7 +153,7 @@ Use these:
 Script before job execution:
 
 ```bash
-#SBATCH --partition=interactive
+#SBATCH --partition=small
 #SBATCH --account=project_2006657
 #SBATCH --time=00:10:00
 #SBATCH --ntasks=1
@@ -165,7 +166,7 @@ Click **save machine** at the top right
 
 Click **Start Job** at the bottom right
 
-* For this tutorial, the default 1 minute interval to ping Mahti for the job status is ok, but for actual production jobs, that could be increased to e.g. 1 hour. The status can always be refreshed manually. This job should finish in seconds.
+* For this tutorial, the default 1 minute interval to ping Puhti for the job status is ok, but for actual production jobs, that could be increased to e.g. 1 hour. The status can always be refreshed manually. This job should finish in seconds.
 
 !["Refresh view"](../screens_20/11.png "upt")
 
@@ -214,7 +215,7 @@ Once the job finishes (you can refresh the view - wait for results to get downlo
 You can also log in on the supercomputer
 
 ```bash
-ssh -Y your-username@mahti.csc.fi
+ssh -Y your-username@puhti.csc.fi
 ```
 
 and follow the job status with slurm commands more on these e.g. in
@@ -227,12 +228,12 @@ sacct           # my ended jobs for the last day
 sacct -X -o jobid,start,jobname,state,elapsed,alloc # last jobs with custom fields
 ```
 
-A local terminal on Mahti also gives access to some additional tools and scripts
+A local terminal on Puhti also gives access to some additional tools and scripts
 that come with TURBOMOLE that can be nice to follow or post process the data. You
 can find these e.g.
 
 ```bash
-module load turbomole
+module load turbomole/7.8
 ls $TURBODIR/scripts/
 cgnce -h # to get help on usage
 actual -h 
