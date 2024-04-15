@@ -32,6 +32,7 @@ replace  `your-username` with your actual username in order to make it a unique 
 1. Once the structure optimization has (hopefully) converged, fill in the total energy of that structure into the table.
 !["finish"](../img/t2_4.png)  
 
+
 ## Examine how long it took to run the job
 
 When a job has finished, all output files are transferred to your local job and deleted from Puhti's work directory.
@@ -51,6 +52,19 @@ sacct -X -j JOBID -o state,start,alloc,elapsed,cputime
 ```
 Here the `Elapsed` time is the wall time the job took to finish. 
 
+Use an optimized structure and define a new job, `Start new job with current data`, where you do define the job as a 
+`Single Point -> Energy & Gradient (ground state)`. Do this calculation  using 1,2,4 and 8 cores. 
+Tabulate the values into a table. You can calculate the "speedup" by
+dividing the 1 core time with N core time. Linear speedup would equal
+the number of cores used. A speedup above 1.4 when doubling the number of cores is often considered as reasonable. 
+
+
+|  cores     |   walltime  | speedup  |
+| ---------- | ----------- |   -----: |
+|    1       |             |          |
+|    2       |             |          |
+|    4       |             |          |
+|    8       |             |          |
 
 ## Discussion
 
@@ -59,8 +73,29 @@ Here the `Elapsed` time is the wall time the job took to finish.
 * Are these numbers accurate?
 * How to get more accurate information?
 * What else affects the performance?
-* Is Mahti the right place for these kinds of calculations?
 
+
+## TmoleX and workflows
+
+Occationally you have designed a certain type of model/procedure that you would like to apply to a bunch of different structures. 
+An example was the preoptimization followed by an optimization at a higher level. Such batch jobs can be easily done with TmoleX.
+
+1. Create a new project and select `Templates -> New/Edit Template`
+
+!["finish"](../img/t2_b1.png)
+
+2. Define two job steps corresponding to an AM1 geometry optimization followed by a dft/bp86/sv(p) optimization.
+
+!["finish"](../img/t2_b3.png)
+
+
+3. Create a batch `New Batch Job` and hit `Add List of SMILES`. In that window add some of the our SMILES strings followed by a name (here the cid number)
+!["finish"](../img/t2_b4.png)
+
+4. For the batch of molecules `Choose Job Template` -> `Charge: Use from input` -> `Apply Job Template`   
+
+  
+  
 This ends the tutorial.
 
 

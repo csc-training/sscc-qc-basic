@@ -135,7 +135,13 @@ In the new dialog, we define the remote (supercomputer) configuration:
    * General instructions for Puhti [docs.csc.fi/apps/tmolex/](https://docs.csc.fi/apps/tmolex/)
    * **important** Replace `your-username` with your actual username on CSC supercomputer! Also, in the *Work directory*  field.
 
+TURBOMOLE can be run in parallel either via a shared memory approach (SMP, only within a single node) or 
+by using MPI parallelization (possible to run over several nodes). In the tutorial we will use the SMP version.
+
+
 !["update"](../img/local_9.png)
+
+
 
 Use these:
 
@@ -150,18 +156,17 @@ Use these:
 Script before job execution:
 
 ```bash
-#SBATCH --reservation=sscc_thu_small
-#SBATCH --partition=small
-#SBATCH --nodes=1
-#SBATCH --ntasks-per-node=4             # MPI tasks per node
-#SBATCH --account=project_2006657       # insert here the project to be billed 
-#SBATCH --time=00:30:00                 # time as `hh:mm:ss`
+#SBATCH --reservation=sscc_thu_small                  # resource reservation for school
+#SBATCH --partition=small                             # queue
+#SBATCH --nodes=1                                     # for SMP only 1 is possible
+#SBATCH --cpus-per-task=4                             # SMP threads
+#SBATCH --account=project_2006657                     # insert here the project to be billed     
+#SBATCH --time=00:30:00                               # time as `hh:mm:ss`
 source /appl/profile/zz-csc-env.sh
 ulimit -s unlimited
-export PARA_ARCH=MPI                    # use MPI
-module load turbomole/7.8
-export SLURM_CPU_BIND=none
-export PARNODES=$SLURM_NTASKS           # for MPI
+export PARA_ARCH=SMP                                  # use SMP threads
+module load turbomole/7.8   
+export PARNODES=$SLURM_CPUS_PER_TASK                  # for SMP
 export PATH=$TURBODIR/bin/`$TURBODIR/scripts/sysname`:$PATH
 ```
 

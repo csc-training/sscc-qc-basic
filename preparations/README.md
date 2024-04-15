@@ -44,6 +44,7 @@ Below are some example queue settings that can be used in TmoleX:
 
 ![Slurm settings](https://docs.csc.fi/img/tmolex_remote_settings.png)
 
+
 Where the complete script to be inserted in the field "Script before job
 execution" contains something like (modify according to your actual needs):
 
