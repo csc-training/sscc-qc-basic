@@ -29,7 +29,7 @@ replace  `your-username` with your actual username in order to make it a unique 
 !["SMILES"](../img/t2_2.png)
 1. Continue in a similar way as we did with formaldehyde and optimize the structure.
 !["start"](../img/t2_3.png) 
-1. Once the structure optimization has (hopefully) converged, fill in the total energy of that structure ito the table.
+1. Once the structure optimization has (hopefully) converged, fill in the total energy of that structure into the table.
 !["finish"](../img/t2_4.png)  
 
 ## Examine how long it took to run the job
