@@ -210,8 +210,6 @@ Start a frequency calculation (Reuse data by just hitting "Start new job by usin
 
 In the "Job typ" list select "Spectra & Excited States --> IR & vibrational frequencies"
 
-!["Select of frequency calculation"](../screens_20/15.png "upt")
-
 Select "Run (Network)" to launch the job.
 
 Once the job finishes (you can refresh the view - wait for results to get downloaded).
@@ -222,7 +220,7 @@ ssh -Y your-username@puhti.csc.fi
 ```
 
 and follow the job status with slurm commands more on these e.g. in
-(CSC Computing Environment self learning materials)[https://csc-training.github.io/csc-env-eff/hands-on/batch_resources/tutorial_sacct_and_seff.html]
+[CSC Computing Environment self learning materials](https://csc-training.github.io/csc-env-eff/hands-on/batch_resources/tutorial_sacct_and_seff.html)
 directly, e.g. with:
 
 ```bash
