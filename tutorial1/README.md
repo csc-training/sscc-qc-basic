@@ -26,7 +26,6 @@
 * The overall CSC supercomputer environment can be found in the [Docs CSC user guide](https://docs.csc.fi/computing/available-systems/)
   or in the [CSC Computing environment self learning course materials](https://csc-training.github.io/csc-env-eff/).
 * An option is to use `ssh` and login directly on the Puhti login node, and prepare the job with `define`.
-d, launch from icon/menu
 !["Using TmoleX network scheme"](../img/tmolex-and-puhti.svg "Using TmoleX network scheme")
 
 ## Task 1: Optimize the ground state for formaldehyde
@@ -134,7 +133,7 @@ In the new dialog, we define the remote (supercomputer) configuration:
    * etc.
    * Note, this will differ for every user and machine
    * General instructions for Puhti [docs.csc.fi/apps/tmolex/](https://docs.csc.fi/apps/tmolex/)
-   * **important** Replace `your-username` with your actual username on CSC supercomputer! Also, in the `work-directory` field.
+   * **important** Replace `your-username` with your actual username on CSC supercomputer! Also, in the *Work directory*  field.
 
 !["update"](../img/local_9.png)
 
@@ -154,7 +153,7 @@ Script before job execution:
 #SBATCH --reservation=sscc_thu_small
 #SBATCH --partition=small
 #SBATCH --nodes=1
-#SBATCH --ntasks-per-node=1             # MPI tasks per node
+#SBATCH --ntasks-per-node=4             # MPI tasks per node
 #SBATCH --account=project_2006657       # insert here the project to be billed 
 #SBATCH --time=00:30:00                 # time as `hh:mm:ss`
 source /appl/profile/zz-csc-env.sh
@@ -197,8 +196,6 @@ At the end of the geometry optimization we have reached a stationary point
 * inflection point **B**
 * a maximum **C**
 
-!["gradients"](../screens_20/gradient.png "upt")
-
 The nature of the stationary point can be deduced from the curvature (Hessian).
 A positive curvature corresponds to a minimum, a negative to a maximum.
 
@@ -209,7 +206,7 @@ In order to verify that the stationary point is a true minimum
 
 Start a frequency calculation (Reuse data by just hitting "Start new job by using current data as input" )
 
-!["Start new job from previous results"](../screens_20/14.png "upt")
+!["Start new job from previous results"](../img/local_16.png )
 
 In the "Job typ" list select "Spectra & Excited States --> IR & vibrational frequencies"
 
@@ -247,7 +244,7 @@ actual -h
 
 All calculated frequencies are positive indicating that the structure corresponds to a true minimum.
 
-!["Frequency calculation results"](../screens_20/16.png "upt")
+!["Frequency calculation results"](../img/local_19.png)
 
 The zero Kelvin minimum energy structure in a vacuum is often the starting point in solving
 chemical problems. It often represents surprisingly well the molecular properties despite
@@ -255,8 +252,6 @@ all the approximations made. What could you use this information for? How to val
 the model?
 
 This ends the tutorial.
-
-
 
 
 
