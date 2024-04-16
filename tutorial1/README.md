@@ -136,12 +136,10 @@ In the new dialog, we define the remote (supercomputer) configuration:
    * **important** Replace `your-username` with your actual username on CSC supercomputer! Also, in the *Work directory*  field.
 
 TURBOMOLE can be run in parallel either via a shared memory approach (SMP, only within a single node) or 
-by using MPI parallelization (possible to run over several nodes). In the tutorial we will use the SMP version.
+by using MPI parallelization (possible to run over several nodes). In this tutorial we will use the SMP version.
 
 
 !["update"](../img/local_9.png)
-
-
 
 Use these:
 
@@ -182,7 +180,7 @@ Click **Start Job** at the bottom right
 
 ## Task 1: Results -- structure
 
-The geometry optimization needed 6 cycles to reach the stationary point on the energy surface.
+The geometry optimization needed 5 cycles to reach the stationary point on the energy surface.
 
 !["Optimized geometry"](../img/local_13.png)
 

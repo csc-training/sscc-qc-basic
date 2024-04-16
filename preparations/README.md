@@ -26,9 +26,9 @@ your CSC/Haka user account.
    (e.g. `/scratch/project_2006657/<your-username>/qc_tutorial1`).
 5. Define your system and type of calculation. 
 6. Small jobs can be run interactively: Start Job -> Run (local)
-7. Larger jobs should be run as batch jobs: Start Job -> Run (network). Example
-   settings are given below. Note that passwordless connection doesn't work via
-   the browser. Remember to save the settings using `Save Machine`.
+7. Larger jobs should be run as batch jobs: Start Job -> Run (network). Note that at the moment only the MPI parallel approach seems to work for Puhti batch jobs via the browser. 
+
+ Example settings are given below.  Remember to save the settings using `Save Machine`.
  
 ### Install your own TmoleX
 
