@@ -26,7 +26,7 @@ your CSC/Haka user account.
    (e.g. `/scratch/project_2006657/<your-username>/qc_tutorial1`).
 5. Define your system and type of calculation. 
 6. Small jobs can be run interactively: Start Job -> Run (local)
-7. Larger jobs should be run as batch jobs: Start Job -> Run (network). Note that at the moment only the MPI parallel approach seems to work for Puhti batch jobs via the browser. 
+7. Larger jobs should be run as batch jobs: Start Job -> Run (network).
 
  Example settings are given below.  Remember to save the settings using `Save Machine`.
  
@@ -42,25 +42,24 @@ client to analyze the results.
 
 Below are some example queue settings that can be used in TmoleX:
 
-![Slurm settings](https://docs.csc.fi/img/tmolex_remote_settings.png)
+![SLURM settings](../img/local_9.png)
 
 
 Where the complete script to be inserted in the field "Script before job
 execution" contains something like (modify according to your actual needs):
 
 ```bash
-#SBATCH --reservation=sscc_thu_small
-#SBATCH --partition=small
-#SBATCH --nodes=1
-#SBATCH --ntasks-per-node=4             # MPI tasks per node
-#SBATCH --account=project_2006657       # insert here the project to be billed 
-#SBATCH --time=00:30:00                 # time as `hh:mm:ss`
+#SBATCH --reservation=sscc_thu_small                  # resource reservation for school
+#SBATCH --partition=small                             # queue
+#SBATCH --nodes=1                                     # for SMP only 1 is possible
+#SBATCH --cpus-per-task=4                             # SMP threads
+#SBATCH --account=project_2006657                     # insert here the project to be billed     
+#SBATCH --time=00:30:00                               # time as `hh:mm:ss`
 source /appl/profile/zz-csc-env.sh
 ulimit -s unlimited
-export PARA_ARCH=MPI                    # use MPI
-module load turbomole/7.8
-export SLURM_CPU_BIND=none
-export PARNODES=$SLURM_NTASKS           # for MPI
+export PARA_ARCH=SMP                                  # use SMP threads
+module load turbomole/7.8   
+export PARNODES=$SLURM_CPUS_PER_TASK                  # for SMP
 export PATH=$TURBODIR/bin/`$TURBODIR/scripts/sysname`:$PATH
 ```
 

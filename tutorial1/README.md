@@ -9,7 +9,7 @@
 1. This tutorial is made for use with TmoleX 24 and TUBOMOLE 7.8
 1. We'll use TmoleX to set up a formaldehyde geometry optimization
 1. Configure and submit the job to be run on puhti.csc.fi supercomputer
-1. Perform a frequency calculation on the resulting structure
+1. Perform a subsequent frequency calculation on the optimized structure
 1. Visualize results
 
 ## Remote usage setup at CSC
@@ -17,15 +17,14 @@
 * TmoleX can be used either via a browser or by running it on your local 
   computer (see [Preparations](../preparations/README.md) )   
 * The model system and input parameters for the TUBOMOLE job are specified  using TmoleX
-* A connection to supercomputer puhti.csc.fi is set up
-  in TmoleX using ssh. (The password is cleared upon closing the software)
+* A connection to supercomputer puhti.csc.fi is set up in TmoleX using ssh. (The password is cleared upon closing the software)
 * Installation directory and supercomputer specific options are set in TmoleX so that the GUI can
   launch the job for the queueing system (SLURM) on the Puhti
-* TmoleX can follow progress and once the job can completed, dowload the results to the local computer
+* TmoleX can follow the progress and once the job has completed, dowload the results to the local computer
 * The CSC TmoleX page has more information.
 * The overall CSC supercomputer environment can be found in the [Docs CSC user guide](https://docs.csc.fi/computing/available-systems/)
   or in the [CSC Computing environment self learning course materials](https://csc-training.github.io/csc-env-eff/).
-* An option is to use `ssh` and login directly on the Puhti login node, and prepare the job with `define`.
+* Aniother option is to use `ssh` and login directly on the Puhti login node, and prepare the job with `define`.
 !["Using TmoleX network scheme"](../img/tmolex-and-puhti.svg "Using TmoleX network scheme")
 
 ## Task 1: Optimize the ground state for formaldehyde
@@ -133,10 +132,10 @@ In the new dialog, we define the remote (supercomputer) configuration:
    * etc.
    * Note, this will differ for every user and machine
    * General instructions for Puhti [docs.csc.fi/apps/tmolex/](https://docs.csc.fi/apps/tmolex/)
-   * **important** Replace `your-username` with your actual username on CSC supercomputer! Also, in the *Work directory*  field.
+   * **important** Replace `your-username` with your actual username on CSC supercomputer! Also in the *Work directory*  field.
 
 TURBOMOLE can be run in parallel either via a shared memory approach (SMP, only within a single node) or 
-by using MPI parallelization (possible to run over several nodes). In this tutorial we will use the SMP version.
+by using MPI parallelization (possible to run a job over several nodes). In this tutorial we will use the SMP version.
 
 
 !["update"](../img/local_9.png)

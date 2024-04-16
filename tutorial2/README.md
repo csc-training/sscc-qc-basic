@@ -27,7 +27,7 @@ replace  `your-username` with your actual username in order to make it a unique 
 !["SMILES"](../img/t2_1.png)
 1. Since the conversion from `SMILES` to `xyz` is quite rough it's often a good idea to do a preoptimization. 
 !["SMILES"](../img/t2_2.png)
-1. Continue in a similar way as we did with formaldehyde and optimize the structure.
+1. Continue in a similar way as we did with formaldehyde and optimize the structure. Do a SMP parallel calculation and request for 8 cores.
 !["start"](../img/t2_3.png) 
 1. Once the structure optimization has (hopefully) converged, fill in the total energy of that structure into the table.
 !["finish"](../img/t2_4.png)  
@@ -52,11 +52,11 @@ sacct -X -j JOBID -o state,start,alloc,elapsed,cputime
 ```
 Here the `Elapsed` time is the wall time the job took to finish. 
 
-Use an optimized structure and define a new job, `Start new job with current data`, where you do define the job as a 
-`Single Point -> Energy & Gradient (ground state)`. Do this calculation  using 1,2,4 and 8 cores. 
+Use the optimized structure and define a new job, `Start new job with current data`, where you change the basis set (`Atomic Attributes`) to `def2-TZVP` and define the job as a 
+`Single Point-> Energy (ground state)` . Repeat this calculation  using 1,2,4 and 8 cores. 
 Tabulate the values into a table. You can calculate the "speedup" by
 dividing the 1 core time with N core time. Linear speedup would equal
-the number of cores used. A speedup above 1.4 when doubling the number of cores is often considered as reasonable. 
+the number of cores used. A [speedup above 1.5](https://docs.csc.fi/computing/running/performance-checklist/#perform-a-scaling-test) when doubling the number of cores is often considered as reasonable.  
 
 
 |  cores     |   walltime  | speedup  |
@@ -77,8 +77,9 @@ the number of cores used. A speedup above 1.4 when doubling the number of cores 
 
 ## TmoleX and workflows
 
-Occationally you have designed a certain type of model/procedure that you would like to apply to a bunch of different structures. 
-An example was the preoptimization followed by an optimization at a higher level. Such batch jobs can be easily done with TmoleX.
+Occationally you would like to apply the same model/workflow on a bunch of different structures.
+An example was the preoptimization followed by an optimization at a higher level that we used for formaldehyde. 
+Such batch jobs can be easily done with TmoleX.
 
 1. Create a new project and select `Templates -> New/Edit Template`
 
