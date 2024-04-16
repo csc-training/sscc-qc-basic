@@ -21,7 +21,7 @@
 replace  `your-username` with your actual username in order to make it a unique and not interfering with other participants projects.
   * If you use a locally installed TmoleX then define the new project under your home directory, e.g. `~/qc_tutorial2` .
 1. A new job is initiated within your new TmoleX project. 
-1. Rename the first job in this project according to the `cid` identifier you picked fro mthe list
+1. Rename the first job in this project according to the `cid` identifier you picked from the list
 !["Rename job"](../img/t2_0.png)
 1. In the first `Geometry` subsection paste your SMILES string into the slot `SMILES to 3D`. Pushing the buttons should launch the TmoleX viewer showing the 3D structure of the molecule corresponding to your SMILES string.
 !["SMILES"](../img/t2_1.png)
@@ -90,9 +90,15 @@ An example was the preoptimization followed by an optimization at a higher level
 
 
 3. Create a batch `New Batch Job` and hit `Add List of SMILES`. In that window add some of the our SMILES strings followed by a name (here the cid number)
-!["finish"](../img/t2_b4.png)
+!["finish"](../img/t2_b5.png)
 
 4. For the batch of molecules `Choose Job Template` -> `Charge: Use from input` -> `Apply Job Template`   
+!["finish"](../img/t2_b6.png)
+
+5. Once the template has been selected start the job
+!["finish"](../img/t2_b7.png)
+
+
 
   
   
