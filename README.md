@@ -21,4 +21,4 @@ users on the CSC supercomputers.
 * Multiple geometry optimizations of a number of isomers
 * Switch to a higher quality basis set for a single point energy calculation
 * Benchmark resource usage by looking at how long the jobs take vs used resources
-
+* Apply the same tailored modelling procedure to a bunch of molecules
