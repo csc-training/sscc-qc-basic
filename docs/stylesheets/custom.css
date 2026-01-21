@@ -1,0 +1,27 @@
+/* Make left sidebar narrower */
+.md-sidebar--primary {
+  width: 120px;
+}
+
+/* Make right TOC sidebar narrower */
+.md-sidebar--secondary {
+  width: 80px;
+}
+
+/* Shift main content to fill the space */
+.md-main__inner {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+
+/* Make content area wider */
+.md-grid {
+  max-width: 1500px; /* Default is ~960px */
+}
+
+/* Make TOC on the right narrower */
+.md-sidebar--secondary {
+  flex-basis: 200px; /* default is 320px */
+}
+.md-grid { max-width: none; }

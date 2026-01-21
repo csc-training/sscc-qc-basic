@@ -1,0 +1,26 @@
+site_name: SSCC QC Basic
+site_url: https://nruneberg.github.io/sscc-qc-basic/
+repo_url: https://github.com/nruneberg/sscc-qc-basic
+theme:
+  name: material
+  logo: img/CSC_logo_Brilliant_pysty_1riv_rgb.png
+  favicon: img/CSC_logo_Brilliant_pysty_1riv_rgb.png
+  features:
+    - navigation.instant
+    - search.highlight
+    - search.filters
+    - lightbox
+
+nav:
+  - Home: index.md
+  - Preparations: preparations/README.md
+  - Tutorial 1: tutorial1/README.md
+  - Tutorial 2: tutorial2/README.md
+
+extra_css:
+  - stylesheets/custom.css
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences    
